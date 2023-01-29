@@ -7,7 +7,7 @@ output: md_document
 
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE, cache=TRUE)
+knitr::opts_knit$set(root.dir = '/tmp')
 library(haven)
 library(tidyverse)
 library(kableExtra)
@@ -20,7 +20,7 @@ library(ggplot2)
 ## A)
 
 ```{r A, include =FALSE}
-olympics = read.csv('~/data/olympics_top20.csv')
+olympics = read.csv('/data/olympics_top20.csv')
 
 athletics_female = olympics %>%
   filter(sex=="F" & sport=="Athletics") 
