@@ -4,7 +4,7 @@ author: "Pranjal Maheshka, Asha Christensen, Marco Navarro"
 date: "2023-01-30"
 output: md_document
 ---
-<p style="text-align:center"> 
+
 
 # DataMining_PS1
 
@@ -12,7 +12,7 @@ output: md_document
 
 ### 2023-01-30
 
- </p>
+
 
 ```{r setup, include=FALSE}
 library(knitr)
