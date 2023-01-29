@@ -24,11 +24,6 @@ IAH, PHX, and DEN.
 
 So, let’s look at the weekend flights for these destinations.
 
-    abia_df %>%
-      filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
-      ggplot() +
-      geom_line(aes(x=nweek, y=ntotal, color=Dest))
-
 ![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
 This graph shows that Denver is a low-demand location during the winter

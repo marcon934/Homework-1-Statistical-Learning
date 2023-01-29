@@ -115,7 +115,7 @@ The 5 most popular flying destinations to or out of AUS are DAL, DFW, IAH, PHX, 
 
 So, let's look at the weekend flights for these destinations.
 
-```{r, warning = FALSE}
+```{r, echo=FALSE, warning = FALSE}
 abia_df %>%
   filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
   ggplot() +
