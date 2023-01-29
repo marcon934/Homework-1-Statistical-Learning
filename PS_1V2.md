@@ -24,10 +24,14 @@ IAH, PHX, and DEN.
 
 So, let’s look at the weekend flights for these destinations.
 
-    ## Warning: Removed 5 rows containing missing values (`geom_line()`).
+    abia_df %>%
+      filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
+      ggplot() +
+      geom_line(aes(x=nweek, y=ntotal, color=Dest))
 
-![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-6-1.png) This
-graph shows that Denver is a low-demand location during the winter
+![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+
+This graph shows that Denver is a low-demand location during the winter
 months and that Dallas is a popular destination.
 
 However, these destinations are popular due to their proximity to AUS
@@ -39,14 +43,13 @@ Additionally, we can normalize the number of flights so that we can
 focus in relative drops in demand compared to normal– this will reveal
 the weekends to get the best “Deals”.
 
-    ## Warning: Removed 6 rows containing missing values (`geom_line()`).
+![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
-![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-7-1.png) This
-graph depicts the standardized flights in and out of Austin for every
-weekend of the year for the top 8 tourist destinations in the United
-States (published on World Atlas, 2019): New York, Miami (no flights out
-of AUS), Los Angeles, Orlando, San Francisco, Las Vegas, Honolulu (No
-flights out of AUS), and Washington DC.
+This graph depicts the standardized flights in and out of Austin for
+every weekend of the year for the top 8 tourist destinations in the
+United States (published on World Atlas, 2019): New York, Miami (no
+flights out of AUS), Los Angeles, Orlando, San Francisco, Las Vegas,
+Honolulu (No flights out of AUS), and Washington DC.
 
 If we are interested in a vacation this weekend, San Francisco will give
 us the best “deal”. If I would like to go to Las Vegas, the end of the

@@ -110,11 +110,12 @@ abia_df2 = abia_df %>%
   summarize(nall = sum(ntotal))
 
 ```
+
 The 5 most popular flying destinations to or out of AUS are DAL, DFW, IAH, PHX, and DEN.
 
 So, let's look at the weekend flights for these destinations.
 
-```{r, echo = FALSE}
+```{r, warning = FALSE}
 abia_df %>%
   filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
   ggplot() +
@@ -122,13 +123,14 @@ abia_df %>%
   
 
 ```
+
 This graph shows that Denver is a low-demand location during the winter months and that Dallas is a popular destination.
 
 However, these destinations are popular due to their proximity to AUS and due to them being a large hub: I doubt that Dallas lovefield airport and DFW are most travellers' final destinations.
 
 Perhaps we can visualize the top tourism destinations in the US instead. Additionally, we can normalize the number of flights so that we can focus in relative drops in demand compared to normal-- this will reveal the weekends to get the best "Deals".
 
-```{r, echo=FALSE, warnings=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 
 abiafinal = merge(abia_df, abia_df2, x.on = 'Dest', y.on = 'Dest', all = TRUE)
 
@@ -149,6 +151,7 @@ ggplot() +
   
 
 ```
+
 This graph depicts the standardized flights in and out of Austin for every weekend of the year for the top 8 tourist destinations in the United States (published on World Atlas, 2019): New York, Miami (no flights out of AUS), Los Angeles, Orlando, San Francisco, Las Vegas, Honolulu (No flights out of AUS), and Washington DC. 
 
 If we are interested in a vacation this weekend, San Francisco will give us the best "deal". If I would like to go to Las Vegas, the end of the year is the best time to go, as it's the least-demanded week. 
