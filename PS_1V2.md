@@ -1,23 +1,46 @@
-<p style="text-align:center">
-
 # DataMining\_PS1
 
 ## Pranjal Maheshka, Asha Christensen, Marco Navarro
 
 ### 2023-01-30
 
-</p>
-
-## 2) Wrangling the Olympics
+## Question 2 - Wrangling the Olympics
 
 ### A)
 
-    ##     Percentiles of heights for female competitors across all Athletics events
-    ## 5%                                                                        159
-    ## 25%                                                                       166
-    ## 50%                                                                       170
-    ## 75%                                                                       175
-    ## 95%                                                                       183
+<table>
+<thead>
+<tr class="header">
+<th>Percentiles</th>
+<th style="text-align: center;">Height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5%</td>
+<td style="text-align: center;">159</td>
+</tr>
+<tr class="even">
+<td>25%</td>
+<td style="text-align: center;">166</td>
+</tr>
+<tr class="odd">
+<td>50%</td>
+<td style="text-align: center;">170</td>
+</tr>
+<tr class="even">
+<td>75%</td>
+<td style="text-align: center;">175</td>
+</tr>
+<tr class="odd">
+<td>95%</td>
+<td style="text-align: center;">183</td>
+</tr>
+</tbody>
+</table>
+
+Percentiles of heights for female competitors across all Athletics
+events <dbl> 5% 159 25% 166 50% 170 75% 175 95% 183
 
 The 95th percentile of heights for female competitors across all
 Athletics events 183 centimeters.

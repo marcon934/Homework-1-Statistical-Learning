@@ -29,9 +29,9 @@ library(foreach)
 library(dplyr)
 ```
 
-## 2) Wrangling the Olympics
+## Question 2 - Wrangling the Olympics
 
-### A)
+### A) Percentiles of heights for female competitors across all Athletics events
 
 ```{r A, include =FALSE}
 olympics = read.csv('olympics_top20.csv')
@@ -44,9 +44,17 @@ result1 = as.data.frame(quantile(athletics_female$height, probs = c(.05,.25, .5,
 colnames(result1) = "Percentiles of heights for female competitors across all Athletics events"
 ```
 
-```{r A2, echo= FALSE}
-result1
-```
+
+| Percentiles| Height| 
+| ----- |:---:| 
+|5%     | 159 | 
+|25%     | 166 |
+|50%     | 170 |
+|75%     | 175 |
+|95%     | 183 |
+
+Percentiles of heights for female competitors across all Athletics events
+
 
 The 95th percentile of heights for female competitors across all Athletics events 183 centimeters.
 
