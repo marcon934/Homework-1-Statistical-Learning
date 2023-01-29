@@ -27,7 +27,131 @@ library(caret)
 library(modelr)
 library(foreach)
 library(dplyr)
+library(lubridate)
+library(timechange)
 ```
+
+## Question 1 - Data visualization: flights at ABIA
+```{r setup2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+abia = read.csv("ABIA.csv", as.is = T, fill = T, header = T)
+
+```
+
+
+Weekend trips are a very common type of vacation for students or working professionals-- most of which consist of a flight either Thursday or Friday and a return trip from the same destination Sunday or Monday. 
+
+We chose to examine the popularity for these trips by destination and week of the year in order to find the best combinations to get a low-demand flight that will likely be cheaper than usual. 
+
+```{r matching, echo=FALSE}
+#How can we pair by arrival and departure location
+abia$depart = ifelse(abia$Origin == 'AUS', 'From AUS', 'To AUS')
+#We only care about departures on thursday or friday
+abia_dep = abia %>%
+  filter(depart == 'From AUS') %>%
+  filter(DayOfWeek == 4 | DayOfWeek == 5)
+
+abia_ari = abia %>%
+  filter(depart == 'To AUS') %>%
+  filter(DayOfWeek == 1 | DayOfWeek == 7)
+
+#How do we match these up?
+#imagine that total cost of the round trip to a city is minimized when n_dep + n_ari for the same city is minimized--> I want the lowest total number of flights.
+
+```
+
+The number of flights to a given destination for the given weekend are assembled by adding the number of flights available departing AUS on Thursday or Friday and the number of flights available to return to AUS from that destination the following Sunday or Monday.
+
+```{r, echo=FALSE}
+
+require(lubridate)
+abia_dep = abia_dep %>%
+  mutate(date=make_date(year=2008, month = Month, day = DayofMonth))
+
+abia_ari = abia_ari %>%
+  mutate(date = make_date(year=2008, month = Month, day = DayofMonth))
+
+``` 
+
+```{r, echo=FALSE}
+abia_dep$nweek = format(abia_dep$date, "%U")
+abia_ari$nweek = format(abia_ari$date, "%U")
+
+abia_dep$nweek = strtoi(abia_dep$nweek)
+abia_ari$nweek = strtoi(abia_ari$nweek) - 1
+
+#the arrivals are sunday or monday so they are on a new week, so we subtract 1 to have them labelled as the same
+
+``` 
+
+``` {r, echo=FALSE, message=FALSE}
+abia_dep2 = abia_dep %>%
+  group_by(nweek, Dest) %>%
+  summarize(n=n())
+
+abia_ari2 = abia_ari %>%
+  group_by(nweek, Origin) %>%
+  summarize(n=n())
+
+abia_df = merge(abia_dep2, abia_ari2, by.x=c('nweek', 'Dest'), by.y = c('nweek', 'Origin'), how='inner')
+
+```
+
+``` {R, echo=FALSE}
+abia_df$ntotal = abia_df$n.x + abia_df$n.y
+
+```
+
+```{r, echo=FALSE}
+#ok that's difficult to read. How about we report the top 5 most popular destinations?
+
+abia_df2 = abia_df %>%
+  group_by(Dest) %>%
+  summarize(nall = sum(ntotal))
+
+```
+The 5 most popular flying destinations to or out of AUS are DAL, DFW, IAH, PHX, and DEN.
+
+So, let's look at the weekend flights for these destinations.
+
+```{r, echo = FALSE}
+abia_df %>%
+  filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
+  ggplot() +
+  geom_line(aes(x=nweek, y=ntotal, color=Dest))
+  
+
+```
+This graph shows that Denver is a low-demand location during the winter months and that Dallas is a popular destination.
+
+However, these destinations are popular due to their proximity to AUS and due to them being a large hub: I doubt that Dallas lovefield airport and DFW are most travellers' final destinations.
+
+Perhaps we can visualize the top tourism destinations in the US instead. Additionally, we can normalize the number of flights so that we can focus in relative drops in demand compared to normal-- this will reveal the weekends to get the best "Deals".
+
+```{r, echo=FALSE, warnings=FALSE}
+
+abiafinal = merge(abia_df, abia_df2, x.on = 'Dest', y.on = 'Dest', all = TRUE)
+
+abia_df3 = abiafinal %>%
+  group_by(Dest) %>%
+  summarize(sd = sd(ntotal))
+
+abiafinal = merge(abiafinal, abia_df3, x.on = 'Dest', y.on = 'Dest', all = TRUE)
+
+abiafinal = abiafinal %>%
+  mutate(mean = nall/52, sd = sd, zflight = (ntotal - mean)/ sd)
+
+abiafinal %>%
+  filter(Dest == 'IAD' | Dest == 'JFK' | Dest == 'LAS' | Dest == 'LAX' | Dest == 'MCO' | Dest == 'SFO')%>%
+ggplot() +
+  geom_line(aes(x=nweek, y=zflight, color=Dest)) +
+  labs(title='Weekend Trips of Top US Tourist Destinations', x='Week of Year', y='Standardized Number of Flights')
+  
+
+```
+This graph depicts the standardized flights in and out of Austin for every weekend of the year for the top 8 tourist destinations in the United States (published on World Atlas, 2019): New York, Miami (no flights out of AUS), Los Angeles, Orlando, San Francisco, Las Vegas, Honolulu (No flights out of AUS), and Washington DC. 
+
+If we are interested in a vacation this weekend, San Francisco will give us the best "deal". If I would like to go to Las Vegas, the end of the year is the best time to go, as it's the least-demanded week. 
 
 ## Question 2 - Wrangling the Olympics
 

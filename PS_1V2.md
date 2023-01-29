@@ -4,9 +4,57 @@
 
 ### 2023-01-30
 
+## Question 1 - Data visualization: flights at ABIA
+
+Weekend trips are a very common type of vacation for students or working
+professionals– most of which consist of a flight either Thursday or
+Friday and a return trip from the same destination Sunday or Monday.
+
+We chose to examine the popularity for these trips by destination and
+week of the year in order to find the best combinations to get a
+low-demand flight that will likely be cheaper than usual.
+
+The number of flights to a given destination for the given weekend are
+assembled by adding the number of flights available departing AUS on
+Thursday or Friday and the number of flights available to return to AUS
+from that destination the following Sunday or Monday.
+
+The 5 most popular flying destinations to or out of AUS are DAL, DFW,
+IAH, PHX, and DEN.
+
+So, let’s look at the weekend flights for these destinations.
+
+    ## Warning: Removed 5 rows containing missing values (`geom_line()`).
+
+![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-6-1.png) This
+graph shows that Denver is a low-demand location during the winter
+months and that Dallas is a popular destination.
+
+However, these destinations are popular due to their proximity to AUS
+and due to them being a large hub: I doubt that Dallas lovefield airport
+and DFW are most travellers’ final destinations.
+
+Perhaps we can visualize the top tourism destinations in the US instead.
+Additionally, we can normalize the number of flights so that we can
+focus in relative drops in demand compared to normal– this will reveal
+the weekends to get the best “Deals”.
+
+    ## Warning: Removed 6 rows containing missing values (`geom_line()`).
+
+![](PS_1V2_files/figure-markdown_strict/unnamed-chunk-7-1.png) This
+graph depicts the standardized flights in and out of Austin for every
+weekend of the year for the top 8 tourist destinations in the United
+States (published on World Atlas, 2019): New York, Miami (no flights out
+of AUS), Los Angeles, Orlando, San Francisco, Las Vegas, Honolulu (No
+flights out of AUS), and Washington DC.
+
+If we are interested in a vacation this weekend, San Francisco will give
+us the best “deal”. If I would like to go to Las Vegas, the end of the
+year is the best time to go, as it’s the least-demanded week.
+
 ## Question 2 - Wrangling the Olympics
 
-### A)
+### A) Percentiles of heights for female competitors across all Athletics events
 
 <table>
 <thead>
@@ -40,7 +88,7 @@
 </table>
 
 Percentiles of heights for female competitors across all Athletics
-events <dbl> 5% 159 25% 166 50% 170 75% 175 95% 183
+events
 
 The 95th percentile of heights for female competitors across all
 Athletics events 183 centimeters.
