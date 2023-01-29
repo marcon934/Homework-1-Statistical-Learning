@@ -20,7 +20,7 @@ library(ggplot2)
 ## A)
 
 ```{r A, include =FALSE}
-olympics = read.csv('/data/olympics_top20.csv')
+olympics = read.csv('olympics_top20.csv')
 
 athletics_female = olympics %>%
   filter(sex=="F" & sport=="Athletics") 
