@@ -77,9 +77,19 @@ If we use standard deviation as a measure of variability, Swimming Women's 100 m
 swimmers = olympics %>%
   filter(sport=="Swimming") 
 
+totalavg = swimmers %>%
+  group_by(year) %>%
+  summarize(Average_Age = mean(age))
+
+totalavg = totalavg %>%
+  mutate(sex="Total Average")
+
 averageage = swimmers  %>% 
 group_by(sex, year) %>% 
 summarize(Average_Age = mean(age))
+
+
+averageage = bind_rows(averageage, totalavg)
 ```
 
 
