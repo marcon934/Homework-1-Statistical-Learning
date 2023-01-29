@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
-author: 'Marco Navarro UTIED: mn27484'
-date: "2023-01-29"
+title: "DataMining_PS1"
+author: "Pranjal Maheshka, Asha Christensen, Marco Navarro"
+date: "2023-01-30"
 output: md_document
 ---
 
@@ -13,6 +13,11 @@ library(tidyverse)
 library(kableExtra)
 library(broom)
 library(ggplot2)
+library(rsample)
+library(caret)
+library(modelr)
+library(foreach)
+library(dplyr)
 ```
 
 # 2) Wrangling the Olympics
@@ -89,3 +94,94 @@ ggplot(averageage) +
 ```
 
 The average age of male swimmers in the Olympics presents an upward trend during the first period (100-1924), reaching its maximum (32 years) in the 1924 summer Olympics. After that peak, the average fell dramatically and remained relatively constant around 20 years in the following 5 decades. In most recent years, it shows again an increasing trend and it reached 24 years during the 2016 Olympics. On the other hand, the first Olympics with date for female swimmers was 1924 and their average age was 18 years old. That average remains relatively constant for fifty years and started to show a growing trend since 1984. As a result of this trend, the average age of female swimmers was 22 years old in the 2016 Olympics in Rio de Janeiro. In general, both group of swimmers presents similar trends, the average remained relatively constant from mid-1920s to 1980 and started to show an increase in the last 4 decades.
+
+## Question 3 - K-Nearest Neighbors Regression for S-Class Cars
+
+The data set contains over 29,000 Mercedes S-Class vehicles. It was subset down to include price and mileage for the 350 and 65 AMG trim levels only. The data for each trim level was split in an 80/20 ratio corresponding to train/test splits. 
+
+```{r readdata, include=FALSE}
+sclass <-  read.csv('sclass.csv')
+summary(sclass)
+
+sclass_subset = subset(sclass, select = c(trim, mileage, price))
+trim350 = dplyr::filter(sclass_subset, trim == "350")
+trim65amg = dplyr::filter(sclass_subset, trim == "65 AMG")
+
+summary(trim350)
+summary(trim65amg)
+```
+
+```{r trim350, include=FALSE}
+trim350_split =  initial_split(trim350, prop=0.8)
+traindata = training(trim350_split)
+testdata  = testing(trim350_split)
+
+rmse_df = data.frame()
+k_rmse_out = foreach(i=2:40, .combine='c') %do% {
+  knn_model = knnreg(price ~ mileage, data=traindata, k=i)
+  output = c(i, modelr::rmse(knn_model, testdata))
+  rmse_df = rbind(rmse_df, output)
+}
+
+colnames(rmse_df)<-c("k", "RMSE")
+min_k = subset(rmse_df, RMSE == min(RMSE)) 
+```
+
+## Mercedes S-Class 350 
+The RMSE values for the 350 trim usually range from 9,500 to 12,500 for k-values from 2-80. The lowest RMSE has a different k-value for each iteration of code because of the randomized train/test splits. The k-value associated with the lowest RMSE value ranged from 8 to 73. Given the general shape of the RMSE-k plot, and in order to find a balance between a low RMSE and a smoother prediction curve - the k-value chosen for the model is 20.
+
+```{r trim350_plot1, echo=FALSE}
+ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-values for Mercedes S-Class 350")
+```
+
+Below is a plot of the fitted model, i.e. predictions vs price. At k=20 there is lesser variation in the curve (less wiggly) than a lower k-value while having a relatively low RMSE. 
+
+```{r trim350_plot2, echo=FALSE}
+knn_trim = knnreg(price ~ mileage, data=traindata, k=20)
+#modelr::rmse(knn_trim, testdata)
+testdata = testdata %>%
+  mutate(price_pred = predict(knn_trim, testdata))
+
+ggplot(testdata) + geom_line(aes(x = mileage, y = price_pred), color='red', size=1.5) + 
+  ggtitle("Fitted model for the price of Mercedes S-Class 350 with k=20") + xlab("Mileage (miles)") + ylab("Predicted Price ($)")
+```
+
+## Mercedes S-Class 65 AMG
+```{r trim65amg, include=FALSE, echo=FALSE}
+trim65amg_split =  initial_split(trim65amg, prop=0.8)
+traindata = training(trim65amg_split)
+testdata  = testing(trim65amg_split)
+
+rmse_df = data.frame()
+k_rmse_out = foreach(i=2:40, .combine='c') %do% {
+  knn_model = knnreg(price ~ mileage, data=traindata, k=i)
+  output = c(i, modelr::rmse(knn_model, testdata))
+  rmse_df = rbind(rmse_df, output)
+}
+
+colnames(rmse_df)<-c("k", "RMSE")
+min_k = subset(rmse_df, RMSE == min(RMSE)) 
+```
+
+The RMSE values for the 65 AMG trim usually range from 15,000 to 32,000 for k-values from 2-80. The lowest RMSE has a different k-value for each iteration of code because of the randomized train/test splits. The k-value associated with the lowest RMSE value ranged from 3 to 36. Given the general shape of the RMSE-k plot, and in order to find a balance between a low RMSE and a smoother prediction curve - the k-value chosen for the model is 10.
+
+```{r trim65amg_plot1, echo=FALSE }
+ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-values for Mercedes S-Class 350")
+```
+
+Below is a plot of the fitted model, i.e. predictions vs price. At k=10 there is lesser variation in the curve (less wiggly) than a lower k-value while having a relatively low RMSE. 
+
+```{r trim65amg_plot2, echo=FALSE }
+knn_trim = knnreg(price ~ mileage, data=traindata, k=10)
+#modelr::rmse(knn_trim, testdata)
+testdata = testdata %>%
+  mutate(price_pred = predict(knn_trim, testdata))
+
+ggplot(testdata) + geom_line(aes(x = mileage, y = price_pred), color='red', size=1.5) + 
+  ggtitle("Fitted model for the price of Mercedes S-Class 65 AMG with k=10") + xlab("Mileage (miles)") + ylab("Predicted Price ($)")
+```
+
+
+The 350 trim has data points ranging from $6,600 to 106,010 while the 65 AMG trim has data points ranging from $18,990 to $247,075 and there is significantly more variation in the data for the 65 AMG than the 350. The RMSE values are consistently much higher for the 65 AMG than the 350. The variation in the data can be attributed to the fact that the 65 AMG is an ultra-premium luxury sports car while the 350 is a luxury sedan that sees a much wider audience and much higher sales globally. The exact condition of the 65 AMG and potential sub-trims or add-ons could affect resale price greatly relative to the 350. 
+
+Accordingly, the 350 trim sees higher k-values with lower RMSE values thus resulting in the final pick of k=20. Given the greater variation in price vs mileage for the 65 AMG, lower k-values consistently were associated with the minimum RMSE value and accordingly k=10 was chosen for the 350 trim and k=20 was chosen for the 65 AMG trim.  

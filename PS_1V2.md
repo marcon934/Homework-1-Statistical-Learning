@@ -51,3 +51,65 @@ years old in the 2016 Olympics in Rio de Janeiro. In general, both group
 of swimmers presents similar trends, the average remained relatively
 constant from mid-1920s to 1980 and started to show an increase in the
 last 4 decades.
+
+## Question 3 - K-Nearest Neighbors Regression for S-Class Cars
+
+The data set contains over 29,000 Mercedes S-Class vehicles. It was
+subset down to include price and mileage for the 350 and 65 AMG trim
+levels only. The data for each trim level was split in an 80/20 ratio
+corresponding to train/test splits.
+
+## Mercedes S-Class 350
+
+The RMSE values for the 350 trim usually range from 9,500 to 12,500 for
+k-values from 2-80. The lowest RMSE has a different k-value for each
+iteration of code because of the randomized train/test splits. The
+k-value associated with the lowest RMSE value ranged from 8 to 73. Given
+the general shape of the RMSE-k plot, and in order to find a balance
+between a low RMSE and a smoother prediction curve - the k-value chosen
+for the model is 20.
+
+![](PS_1V2_files/figure-markdown_strict/trim350_plot1-1.png)
+
+Below is a plot of the fitted model, i.e. predictions vs price. At k=20
+there is lesser variation in the curve (less wiggly) than a lower
+k-value while having a relatively low RMSE.
+
+    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    ## ℹ Please use `linewidth` instead.
+
+![](PS_1V2_files/figure-markdown_strict/trim350_plot2-1.png)
+
+## Mercedes S-Class 65 AMG
+
+The RMSE values for the 65 AMG trim usually range from 15,000 to 32,000
+for k-values from 2-80. The lowest RMSE has a different k-value for each
+iteration of code because of the randomized train/test splits. The
+k-value associated with the lowest RMSE value ranged from 3 to 36. Given
+the general shape of the RMSE-k plot, and in order to find a balance
+between a low RMSE and a smoother prediction curve - the k-value chosen
+for the model is 10.
+
+![](PS_1V2_files/figure-markdown_strict/trim65amg_plot1-1.png)
+
+Below is a plot of the fitted model, i.e. predictions vs price. At k=10
+there is lesser variation in the curve (less wiggly) than a lower
+k-value while having a relatively low RMSE.
+
+![](PS_1V2_files/figure-markdown_strict/trim65amg_plot2-1.png)
+
+The 350 trim has data points ranging from $6,600 to 106,010 while the 65
+AMG trim has data points ranging from $18,990 to $247,075 and there is
+significantly more variation in the data for the 65 AMG than the 350.
+The RMSE values are consistently much higher for the 65 AMG than the
+350. The variation in the data can be attributed to the fact that the 65
+AMG is an ultra-premium luxury sports car while the 350 is a luxury
+sedan that sees a much wider audience and much higher sales globally.
+The exact condition of the 65 AMG and potential sub-trims or add-ons
+could affect resale price greatly relative to the 350.
+
+Accordingly, the 350 trim sees higher k-values with lower RMSE values
+thus resulting in the final pick of k=20. Given the greater variation in
+price vs mileage for the 65 AMG, lower k-values consistently were
+associated with the minimum RMSE value and accordingly k=10 was chosen
+for the 350 trim and k=20 was chosen for the 65 AMG trim.
