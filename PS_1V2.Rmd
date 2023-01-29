@@ -1,13 +1,13 @@
 ---
-title: "PS1_SL"
+title: "Untitled"
 author: 'Marco Navarro UTIED: mn27484'
-date: "2023-01-24"
+date: "2023-01-29"
 output: md_document
 ---
 
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_knit$set(root.dir = '/tmp')
+knitr::opts_knit$set()
 library(haven)
 library(tidyverse)
 library(kableExtra)
@@ -89,4 +89,3 @@ ggplot(averageage) +
 ```
 
 The average age of male swimmers in the Olympics presents an upward trend during the first period (100-1924), reaching its maximum (32 years) in the 1924 summer Olympics. After that peak, the average fell dramatically and remained relatively constant around 20 years in the following 5 decades. In most recent years, it shows again an increasing trend and it reached 24 years during the 2016 Olympics. On the other hand, the first Olympics with date for female swimmers was 1924 and their average age was 18 years old. That average remains relatively constant for fifty years and started to show a growing trend since 1984. As a result of this trend, the average age of female swimmers was 22 years old in the 2016 Olympics in Rio de Janeiro. In general, both group of swimmers presents similar trends, the average remained relatively constant from mid-1920s to 1980 and started to show an increase in the last 4 decades.
-
