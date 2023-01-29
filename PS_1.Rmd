@@ -6,8 +6,8 @@ output: md_document
 ---
 
 ```{r setup, include=FALSE}
-setwd("C:/Users/ACER/Desktop/Stats Learning/PS_1")
-knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+opts_chunk$set(root.dir = 'C:/Users/ACER/Documents/GitHub/Homework-1-Statistical-Learning/data')
 library(haven)
 library(tidyverse)
 library(kableExtra)
@@ -20,7 +20,7 @@ library(ggplot2)
 ## A)
 
 ```{r A, include =FALSE}
-olympics = read.csv('olympics_top20.csv')
+olympics = read.csv('C:/Users/ACER/Documents/GitHub/Homework-1-Statistical-Learning/data/olympics_top20.csv')
 
 athletics_female = olympics %>%
   filter(sex=="F" & sport=="Athletics") 
