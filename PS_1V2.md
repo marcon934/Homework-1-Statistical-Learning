@@ -1,6 +1,16 @@
-# 2) Wrangling the Olympics
+<p style="text-align:center">
 
-## A)
+# DataMining\_PS1
+
+## Pranjal Maheshka, Asha Christensen, Marco Navarro
+
+### 2023-01-30
+
+</p>
+
+## 2) Wrangling the Olympics
+
+### A)
 
     ##     Percentiles of heights for female competitors across all Athletics events
     ## 5%                                                                        159
@@ -12,7 +22,7 @@
 The 95th percentile of heights for female competitors across all
 Athletics events 183 centimeters.
 
-## B)
+### B)
 
     ## # A tibble: 10 × 2
     ##    event                                 Standard_Deviation
@@ -33,7 +43,7 @@ Women’s 100 metres Butterfly is the single women’s event that had the
 greatest variability in competitor’s heights across the entire history
 of the Olympics.
 
-## C)
+### C)
 
 ![](PS_1V2_files/figure-markdown_strict/C2-1.png)
 

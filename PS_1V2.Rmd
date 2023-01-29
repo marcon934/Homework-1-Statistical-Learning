@@ -4,6 +4,15 @@ author: "Pranjal Maheshka, Asha Christensen, Marco Navarro"
 date: "2023-01-30"
 output: md_document
 ---
+<p style="text-align:center"> 
+
+# DataMining_PS1
+
+## Pranjal Maheshka, Asha Christensen, Marco Navarro
+
+### 2023-01-30
+
+ </p>
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -20,9 +29,9 @@ library(foreach)
 library(dplyr)
 ```
 
-# 2) Wrangling the Olympics
+## 2) Wrangling the Olympics
 
-## A)
+### A)
 
 ```{r A, include =FALSE}
 olympics = read.csv('olympics_top20.csv')
@@ -41,7 +50,7 @@ result1
 
 The 95th percentile of heights for female competitors across all Athletics events 183 centimeters.
 
-## B)
+### B)
 
 ```{r B, include =FALSE}
 
@@ -70,7 +79,7 @@ tibble(heightsd)
 
 If we use standard deviation as a measure of variability, Swimming Women's 100 metres Butterfly is the single women's event that had the greatest variability in competitor's heights across the entire history of the Olympics.
 
-## C)
+### C)
 
 ```{r C1, include =FALSE}
 
