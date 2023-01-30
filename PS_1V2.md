@@ -91,7 +91,7 @@ command to construct the previous table. In that table, we can observe
 that the 95th percentile of heights for female competitors across all
 Athletics events is 183 centimeters.
 
-### B)
+### B) Variability in competitor’s heights across the entire history of the Olympics
 
 <table>
 <thead>
@@ -156,7 +156,7 @@ In case the question is about the event (individual or team) with
 greatest variability, the answer is Rowing Women’s Coxed Fours with a
 standard deviation of 10.87 centimeters.
 
-### C)
+### C) Average age of Olympic swimmers
 
 ![](PS_1V2_files/figure-markdown_strict/C2-1.png)
 

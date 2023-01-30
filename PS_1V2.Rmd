@@ -180,7 +180,7 @@ colnames(result1) = "Percentiles of heights for female competitors across all At
 
 In order to answer this question, we first filter all the relevant data (female competitors in all Athletics events) and then apply the quantile command to construct the previous table. In that table, we can observe that the 95th percentile of heights for female competitors across all Athletics events is 183 centimeters.
 
-### B)
+### B) Variability in competitor's heights across the entire history of the Olympics
 
 ```{r B, include =FALSE}
 
@@ -225,7 +225,7 @@ To answer this question, we filter the relevant data (female competitors) and th
 
 In case the question is about the event (individual or team) with greatest variability, the answer is Rowing Women's Coxed Fours with a standard deviation of 10.87 centimeters.
 
-### C)
+### C) Average age of Olympic swimmers
 
 ```{r C1, include =FALSE}
 
