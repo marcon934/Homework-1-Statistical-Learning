@@ -204,9 +204,6 @@ Below is a plot of the fitted model, i.e. predictions vs price. At k=20
 there is lesser variation in the curve (less wiggly) than a lower
 k-value while having a relatively low RMSE.
 
-    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-    ## ℹ Please use `linewidth` instead.
-
 ![](PS_1V2_files/figure-markdown_strict/trim350_plot2-1.png)
 
 ## Mercedes S-Class 65 AMG

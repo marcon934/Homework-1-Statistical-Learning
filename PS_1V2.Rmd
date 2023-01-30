@@ -303,7 +303,7 @@ ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-
 
 Below is a plot of the fitted model, i.e. predictions vs price. At k=20 there is lesser variation in the curve (less wiggly) than a lower k-value while having a relatively low RMSE. 
 
-```{r trim350_plot2, echo=FALSE}
+```{r trim350_plot2, echo=FALSE , warning = FALSE}
 knn_trim = knnreg(price ~ mileage, data=traindata, k=20)
 #modelr::rmse(knn_trim, testdata)
 testdata = testdata %>%
@@ -333,7 +333,7 @@ min_k = subset(rmse_df, RMSE == min(RMSE))
 The RMSE values for the 65 AMG trim usually range from 15,000 to 32,000 for k-values from 2-80. The lowest RMSE has a different k-value for each iteration of code because of the randomized train/test splits. The k-value associated with the lowest RMSE value ranged from 3 to 36. Given the general shape of the RMSE-k plot, and in order to find a balance between a low RMSE and a smoother prediction curve - the k-value chosen for the model is 10.
 
 ```{r trim65amg_plot1, echo=FALSE }
-ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-values for Mercedes S-Class 350")
+ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-values for Mercedes S-Class 65 AMG")
 ```
 
 Below is a plot of the fitted model, i.e. predictions vs price. At k=10 there is lesser variation in the curve (less wiggly) than a lower k-value while having a relatively low RMSE. 
