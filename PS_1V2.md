@@ -145,12 +145,12 @@ Athletics events is 183 centimeters.
 </table>
 
 To answer this question, we filter the relevant data (female
-competitors) and then group the observations by event. After that we
-calculate the standard deviation for every event and present the top ten
-women’s events with highest standard deviation in height. We can observe
-that Swimming Women’s 100 metres Butterfly is the individual women’s
-event that had the greatest variability in competitor’s heights across
-the entire history of the Olympics.
+competitors) and then group the observations by event. After that, we
+calculate the standard deviation for every event, and present the top
+ten women’s events with highest standard deviation in height. We can
+observe that Swimming Women’s 100 metres Butterfly is the individual
+women’s event that had the greatest variability in competitor’s heights
+across the entire history of the Olympics.
 
 In case the question is about the event (individual or team) with
 greatest variability, the answer is Rowing Women’s Coxed Fours with a
@@ -160,20 +160,26 @@ standard deviation of 10.87 centimeters.
 
 ![](PS_1V2_files/figure-markdown_strict/C2-1.png)
 
-The average age of male swimmers in the Olympics presents an upward
-trend during the first period (100-1924), reaching its maximum (32
-years) in the 1924 summer Olympics. After that peak, the average fell
-dramatically and remained relatively constant around 20 years in the
-following 5 decades. In most recent years, it shows again an increasing
-trend and it reached 24 years during the 2016 Olympics. On the other
-hand, the first Olympics with date for female swimmers was 1924 and
-their average age was 18 years old. That average remains relatively
-constant for fifty years and started to show a growing trend since 1984.
-As a result of this trend, the average age of female swimmers was 22
-years old in the 2016 Olympics in Rio de Janeiro. In general, both group
-of swimmers presents similar trends, the average remained relatively
-constant from mid-1920s to 1980 and started to show an increase in the
-last 4 decades.
+Starting at 18 years old in 1900, the average age swimmers in the
+Olympics presented an upward trend during the first period (1900-1912),
+reaching its maximum (27 years) in the 1912 Olympics. After that peak,
+the trend changed and the average almost continuously fell for the
+following 6 decades, reaching 18.5 in the mid-1970s. In most recent
+years, an increasing trend was observed again and the average age of
+swimmers in Rio de Janeiro 2016 Olympics was 23.2 years old.
+
+In order to compared male and female swimmers trends, we need to mention
+that data for female swimmers is available for the 1924 Olympics and
+from 1948 to 2016. This situation considerable constraint the comparison
+between both groups. From 1948 to 1984, female and male swimmers average
+age remained relatively constant around 18 and 20 years, respectively.
+After the 1984 Olympics, both series started to present an upward trend.
+However, female average age remained relatively constant since 2000
+Sidney Olympics. In Rio de Janeiro 2016, female swimmers average age was
+22.3 and 24.1 years for male swimmers. In general, both series showed
+similar trends in the period that they are comparable and male swimmers
+average age was almost always higher than female swimmers average age
+(2000 Olympics is the only exception).
 
 ## Question 3 - K-Nearest Neighbors Regression for S-Class Cars
 
