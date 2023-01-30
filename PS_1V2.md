@@ -85,7 +85,10 @@ year is the best time to go, as it’s the least-demanded week.
 </tbody>
 </table>
 
-The 95th percentile of heights for female competitors across all
+In order to answer this question, we first filter all the relevant data
+(female competitors in all Athletics events) and then apply the quantile
+command to construct the previous table. In that table, we can observe
+that the 95th percentile of heights for female competitors across all
 Athletics events is 183 centimeters.
 
 ### B)
@@ -141,10 +144,17 @@ Athletics events is 183 centimeters.
 </tbody>
 </table>
 
-If we use standard deviation as a measure of variability, Swimming
-Women’s 100 metres Butterfly is the single women’s event that had the
-greatest variability in competitor’s heights across the entire history
-of the Olympics.
+To answer this question, we filter the relevant data (female
+competitors) and then group the observations by event. After that we
+calculate the standard deviation for every event and present the top ten
+women’s events with highest standard deviation in height. We can observe
+that Swimming Women’s 100 metres Butterfly is the individual women’s
+event that had the greatest variability in competitor’s heights across
+the entire history of the Olympics.
+
+In case the question is about the event (individual or team) with
+greatest variability, the answer is Rowing Women’s Coxed Fours with a
+standard deviation of 10.87 centimeters.
 
 ### C)
 
