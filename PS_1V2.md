@@ -96,7 +96,7 @@ Athletics events 183 centimeters.
 <table>
 <thead>
 <tr class="header">
-<th>event</th>
+<th>Event</th>
 <th style="text-align: center;">Standard Deviation</th>
 </tr>
 </thead>
@@ -114,8 +114,8 @@ Athletics events 183 centimeters.
 <td style="text-align: center;">9.246396</td>
 </tr>
 <tr class="even">
-<td>Rowing Women’s Coxed Eights 8.741931</td>
-<td style="text-align: center;"></td>
+<td>Rowing Women’s Coxed Eights</td>
+<td style="text-align: center;">8.741931</td>
 </tr>
 <tr class="odd">
 <td>Swimming Women’s 100 metres Butterfly</td>
