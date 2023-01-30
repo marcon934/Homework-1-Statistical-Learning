@@ -235,7 +235,12 @@ The RMSE values are consistently much higher for the 65 AMG than the
 AMG is an ultra-premium luxury sports car while the 350 is a luxury
 sedan that sees a much wider audience and much higher sales globally.
 The exact condition of the 65 AMG and potential sub-trims or add-ons
-could affect resale price greatly relative to the 350.
+could affect resale price greatly relative to the 350. In other words,
+more parameters would help create a better predictive model for the 65
+AMG. The 350 is a sedan that has fewer options and fewer overall
+variations. Sports car enthusiasts are likely more discerning about the
+condition of the car and care more about different subtle aspects than
+the average sedan buyer who might use the 350 as a daily car.
 
 Accordingly, the 350 trim sees higher k-values with lower RMSE values
 thus resulting in the final pick of k=20. Given the greater variation in

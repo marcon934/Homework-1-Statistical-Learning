@@ -284,7 +284,7 @@ traindata = training(trim350_split)
 testdata  = testing(trim350_split)
 
 rmse_df = data.frame()
-k_rmse_out = foreach(i=2:40, .combine='c') %do% {
+k_rmse_out = foreach(i=2:80, .combine='c') %do% {
   knn_model = knnreg(price ~ mileage, data=traindata, k=i)
   output = c(i, modelr::rmse(knn_model, testdata))
   rmse_df = rbind(rmse_df, output)
@@ -295,7 +295,7 @@ min_k = subset(rmse_df, RMSE == min(RMSE))
 ```
 
 ## Mercedes S-Class 350 
-The RMSE values for the 350 trim usually range from 9,500 to 12,500 for k-values from 2-80. The lowest RMSE has a different k-value for each iteration of code because of the randomized train/test splits. The k-value associated with the lowest RMSE value ranged from 8 to 73. Given the general shape of the RMSE-k plot, and in order to find a balance between a low RMSE and a smoother prediction curve - the k-value chosen for the model is 20.
+The RMSE values for the 350 trim usually range from 9,500 to 12,500 for k-values from 2-80. The lowest RMSE has a different k-value for each iteration of code because of the randomized train/test splits. The k-value associated with the lowest RMSE value ranged from 8 to 73. Given the general shape of the RMSE-k plot, and in order to find a balance between a low RMSE and a smoother prediction curve - the k-value chosen for the model is 20. 
 
 ```{r trim350_plot1, echo=FALSE}
 ggplot(rmse_df, aes(k, RMSE)) + geom_point() + geom_line() + ggtitle("RMSE vs k-values for Mercedes S-Class 350")
@@ -320,7 +320,7 @@ traindata = training(trim65amg_split)
 testdata  = testing(trim65amg_split)
 
 rmse_df = data.frame()
-k_rmse_out = foreach(i=2:40, .combine='c') %do% {
+k_rmse_out = foreach(i=2:80, .combine='c') %do% {
   knn_model = knnreg(price ~ mileage, data=traindata, k=i)
   output = c(i, modelr::rmse(knn_model, testdata))
   rmse_df = rbind(rmse_df, output)
@@ -349,6 +349,6 @@ ggplot(testdata) + geom_line(aes(x = mileage, y = price_pred), color='red', size
 ```
 
 
-The 350 trim has data points ranging from $6,600 to 106,010 while the 65 AMG trim has data points ranging from $18,990 to $247,075 and there is significantly more variation in the data for the 65 AMG than the 350. The RMSE values are consistently much higher for the 65 AMG than the 350. The variation in the data can be attributed to the fact that the 65 AMG is an ultra-premium luxury sports car while the 350 is a luxury sedan that sees a much wider audience and much higher sales globally. The exact condition of the 65 AMG and potential sub-trims or add-ons could affect resale price greatly relative to the 350. 
+The 350 trim has data points ranging from $6,600 to 106,010 while the 65 AMG trim has data points ranging from $18,990 to $247,075 and there is significantly more variation in the data for the 65 AMG than the 350. The RMSE values are consistently much higher for the 65 AMG than the 350. The variation in the data can be attributed to the fact that the 65 AMG is an ultra-premium luxury sports car while the 350 is a luxury sedan that sees a much wider audience and much higher sales globally. The exact condition of the 65 AMG and potential sub-trims or add-ons could affect resale price greatly relative to the 350. In other words, more parameters would help create a better predictive model for the 65 AMG. The 350 is a sedan that has fewer options and fewer overall variations. Sports car enthusiasts are likely more discerning about the condition of the car and care more about different subtle aspects than the average sedan buyer who might use the 350 as a daily car. 
 
 Accordingly, the 350 trim sees higher k-values with lower RMSE values thus resulting in the final pick of k=20. Given the greater variation in price vs mileage for the 65 AMG, lower k-values consistently were associated with the minimum RMSE value and accordingly k=10 was chosen for the 350 trim and k=20 was chosen for the 65 AMG trim.  
