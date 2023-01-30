@@ -212,12 +212,12 @@ heightsd <- heightsd[1:10,]
 tibble(heightsd)  
 ```
 
-|event |Standard Deviation|
+|Event |Standard Deviation|
 | ----- |:---:| 
 |Rowing Women's Coxed Fours	|10.865490			|
 |Basketball Women's Basketball|	9.700255			|
 |Rowing Women's Coxed Quadruple Sculls|	9.246396|			
-|Rowing Women's Coxed Eights	8.741931	|	|	
+|Rowing Women's Coxed Eights|	8.741931	|	
 |Swimming Women's 100 metres Butterfly|	8.134399|			
 |Volleyball Women's Volleyball|	8.101521|			
 |Gymnastics Women's Uneven Bars|	8.015942|			
