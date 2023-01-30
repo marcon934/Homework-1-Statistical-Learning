@@ -119,9 +119,9 @@ So, let's look at the weekend flights for these destinations.
 abia_df %>%
   filter(Dest == 'DAL' | Dest == 'DFW' | Dest == 'IAH' | Dest == 'PHX' | Dest == 'DEN') %>%
   ggplot() +
-  geom_line(aes(x=nweek, y=ntotal, color=Dest))
+  geom_line(aes(x=nweek, y=ntotal, color=Dest),linewidth = 0.9)+
+  labs(title='Weekend flights for these destinations', x='Week of Year', y='Number of Flights')
   
-
 ```
 
 This graph shows that Denver is a low-demand location during the winter months and that Dallas is a popular destination.
@@ -146,7 +146,7 @@ abiafinal = abiafinal %>%
 abiafinal %>%
   filter(Dest == 'IAD' | Dest == 'JFK' | Dest == 'LAS' | Dest == 'LAX' | Dest == 'MCO' | Dest == 'SFO')%>%
 ggplot() +
-  geom_line(aes(x=nweek, y=zflight, color=Dest)) +
+  geom_line(aes(x=nweek, y=zflight, color=Dest),linewidth = 0.9) +
   labs(title='Weekend Trips of Top US Tourist Destinations', x='Week of Year', y='Standardized Number of Flights')
   
 
