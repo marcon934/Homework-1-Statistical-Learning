@@ -93,19 +93,56 @@ Athletics events 183 centimeters.
 
 ### B)
 
-    ## # A tibble: 10 × 2
-    ##    event                                 Standard_Deviation
-    ##    <chr>                                              <dbl>
-    ##  1 Rowing Women's Coxed Fours                         10.9 
-    ##  2 Basketball Women's Basketball                       9.70
-    ##  3 Rowing Women's Coxed Quadruple Sculls               9.25
-    ##  4 Rowing Women's Coxed Eights                         8.74
-    ##  5 Swimming Women's 100 metres Butterfly               8.13
-    ##  6 Volleyball Women's Volleyball                       8.10
-    ##  7 Gymnastics Women's Uneven Bars                      8.02
-    ##  8 Shooting Women's Double Trap                        7.83
-    ##  9 Cycling Women's Keirin                              7.76
-    ## 10 Swimming Women's 400 metres Freestyle               7.62
+<table>
+<thead>
+<tr class="header">
+<th>event</th>
+<th style="text-align: center;">Standard Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rowing Women’s Coxed Fours</td>
+<td style="text-align: center;">10.865490</td>
+</tr>
+<tr class="even">
+<td>Basketball Women’s Basketball</td>
+<td style="text-align: center;">9.700255</td>
+</tr>
+<tr class="odd">
+<td>Rowing Women’s Coxed Quadruple Sculls</td>
+<td style="text-align: center;">9.246396</td>
+</tr>
+<tr class="even">
+<td>Rowing Women’s Coxed Eights 8.741931</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Swimming Women’s 100 metres Butterfly</td>
+<td style="text-align: center;">8.134399</td>
+</tr>
+<tr class="even">
+<td>Volleyball Women’s Volleyball</td>
+<td style="text-align: center;">8.101521</td>
+</tr>
+<tr class="odd">
+<td>Gymnastics Women’s Uneven Bars</td>
+<td style="text-align: center;">8.015942</td>
+</tr>
+<tr class="even">
+<td>Shooting Women’s Double Trap</td>
+<td style="text-align: center;">7.826238</td>
+</tr>
+<tr class="odd">
+<td>Cycling Women’s Keirin</td>
+<td style="text-align: center;">7.756718</td>
+</tr>
+<tr class="even">
+<td>Swimming Women’s 400 metres Freestyle</td>
+<td style="text-align: center;">7.624818</td>
+</tr>
+</tbody>
+</table>
 
 If we use standard deviation as a measure of variability, Swimming
 Women’s 100 metres Butterfly is the single women’s event that had the

@@ -208,9 +208,23 @@ heightsd <- heightsd[1:10,]
 ```
 
 
-```{r B2, echo= FALSE}
+```{r B2, include= FALSE}
 tibble(heightsd)  
 ```
+
+|event |Standard Deviation|
+| ----- |:---:| 
+|Rowing Women's Coxed Fours	|10.865490			|
+|Basketball Women's Basketball|	9.700255			|
+|Rowing Women's Coxed Quadruple Sculls|	9.246396|			
+|Rowing Women's Coxed Eights	8.741931	|	|	
+|Swimming Women's 100 metres Butterfly|	8.134399|			
+|Volleyball Women's Volleyball|	8.101521|			
+|Gymnastics Women's Uneven Bars|	8.015942|			
+|Shooting Women's Double Trap|	7.826238|			
+|Cycling Women's Keirin	|7.756718			|
+|Swimming Women's 400 metres Freestyle|	7.624818|	
+
 
 If we use standard deviation as a measure of variability, Swimming Women's 100 metres Butterfly is the single women's event that had the greatest variability in competitor's heights across the entire history of the Olympics.
 
