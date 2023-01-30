@@ -12,8 +12,6 @@ output: md_document
 
 ### 2023-01-30
 
-
-
 ```{r setup, include=FALSE}
 library(knitr)
 knitr::opts_knit$set()
@@ -180,10 +178,7 @@ colnames(result1) = "Percentiles of heights for female competitors across all At
 |75%     | 175 |
 |95%     | 183 |
 
-Percentiles of heights for female competitors across all Athletics events
-
-
-The 95th percentile of heights for female competitors across all Athletics events 183 centimeters.
+The 95th percentile of heights for female competitors across all Athletics events is 183 centimeters.
 
 ### B)
 
@@ -214,7 +209,7 @@ tibble(heightsd)
 
 |Event |Standard Deviation|
 | ----- |:---:| 
-|Rowing Women's Coxed Fours	|10.865490			|
+|Rowing Women's Coxed Fours	|10.86549			|
 |Basketball Women's Basketball|	9.700255			|
 |Rowing Women's Coxed Quadruple Sculls|	9.246396|			
 |Rowing Women's Coxed Eights|	8.741931	|	
@@ -256,7 +251,6 @@ ggplot(averageage) +
   geom_line(aes(x=year,y=Average_Age, color= sex ),linewidth = 1.5) +
   theme(legend.position="bottom")+
           ggtitle("Average age of swimmers by year and sex") +
-  theme(plot.title = element_text(color = "black", size = 16, hjust = 0.5))+
    ylim(10, 32)+
   labs(y= "", x = "Year")
 ```

@@ -85,11 +85,8 @@ year is the best time to go, as it’s the least-demanded week.
 </tbody>
 </table>
 
-Percentiles of heights for female competitors across all Athletics
-events
-
 The 95th percentile of heights for female competitors across all
-Athletics events 183 centimeters.
+Athletics events is 183 centimeters.
 
 ### B)
 
@@ -103,7 +100,7 @@ Athletics events 183 centimeters.
 <tbody>
 <tr class="odd">
 <td>Rowing Women’s Coxed Fours</td>
-<td style="text-align: center;">10.865490</td>
+<td style="text-align: center;">10.86549</td>
 </tr>
 <tr class="even">
 <td>Basketball Women’s Basketball</td>
